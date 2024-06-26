@@ -49,6 +49,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import java.util.Random;
 import java.math.*;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -61,7 +62,6 @@ public class InvoicefxController extends Frame implements Initializable {
     private TextField txtinvoiceno;
     @FXML
     private TextField txtcustomernm;
-    @FXML
     private TextField txtnameofitem;
     @FXML
     private TextField txtquantity;
@@ -146,6 +146,8 @@ public class InvoicefxController extends Frame implements Initializable {
     private RadioButton p_online;
     @FXML
     private Button print;
+    @FXML
+    private ComboBox<?> combo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -222,6 +224,7 @@ public class InvoicefxController extends Frame implements Initializable {
         return medicineslist;
 
     }
+    
 
     public void display() {
         try {
@@ -234,7 +237,7 @@ public class InvoicefxController extends Frame implements Initializable {
             date.setCellValueFactory(new PropertyValueFactory<medicine_variable, Date>("date"));
             expiredate1.setCellValueFactory(new PropertyValueFactory<medicine_variable, Date>("edate"));
             ino.setCellValueFactory(new PropertyValueFactory<medicine_variable, Integer>("invoice_no"));
-
+              
             tableview.setItems(list);
         } catch (Exception e) {
             System.out.println(e + "not display");
@@ -271,6 +274,7 @@ public class InvoicefxController extends Frame implements Initializable {
         }
         return invoicesearch;
     }
+    
 
     public void search() {
         try {

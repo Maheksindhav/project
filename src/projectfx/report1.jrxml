@@ -69,6 +69,10 @@
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="25" y="20" width="121" height="86" uuid="abb8da80-b267-4afd-8dd5-78858a2ca535"/>
+				<imageExpression><![CDATA["C:\\Users\\mahek\\Downloads\\logo2-removebg-preview.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -102,13 +106,6 @@
 				<text><![CDATA[Payment Method:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="174" y="13" width="100" height="20" uuid="3aca04a0-909a-4d03-9b3c-6adedd521956"/>
-				<textElement>
-					<font fontName="Times New Roman" size="15" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{invoiceno}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="513" y="8" width="100" height="20" uuid="29b8d9ee-d089-4267-b466-b6d819bd5ae5"/>
 				<textElement>
 					<font fontName="Times New Roman" size="15" isBold="true"/>
@@ -128,6 +125,13 @@
 					<font fontName="Times New Roman" size="15" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{customername}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="174" y="8" width="100" height="20" uuid="3aca04a0-909a-4d03-9b3c-6adedd521956"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{invoiceno}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
