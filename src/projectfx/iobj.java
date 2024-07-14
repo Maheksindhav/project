@@ -18,6 +18,7 @@ public class iobj {
 
     Connection con;
 
+
     public iobj() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -164,6 +165,23 @@ public class iobj {
 
         } catch (Exception ex) {
             System.out.println(ex);
+        }
+        return 0;
+
+    }
+    
+   public int updatecurrnetstock(int current_stock,String mname) {
+
+        try {
+            PreparedStatement ps = con.prepareStatement("update totaltbl set current_stock=? where medi_name=?");
+            ps.setInt(1, current_stock);
+            ps.setString(2, mname);
+           
+            System.out.println(ps);
+            return ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println(e + "connection problem");
         }
         return 0;
 

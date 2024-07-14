@@ -49,6 +49,8 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import java.util.Random;
 import java.math.*;
+import java.time.Month;
+import java.util.Observable;
 import javafx.scene.control.ComboBox;
 
 /**
@@ -147,45 +149,51 @@ public class InvoicefxController extends Frame implements Initializable {
     @FXML
     private Button print;
     @FXML
-    private ComboBox<?> combo;
-
+    private ComboBox<String> combo;
+   static String combo_value="";
+    int q_t;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         getdatelist();
         display();
-        
+
         invoiceno();
         txtinvoiceno.setText(NO);
+        combo();
+//        meditbl_qty();
+
+
     }
 
-        public void invoiceno()
-        {
-            String[] number={"0","1","2","3","4","5","6","7","8","9"};
-            Random random=new Random();
-            int randomindex1=random.nextInt(number.length);
-            String randomelement1 =number[randomindex1];
-             int randomindex2=random.nextInt(number.length);
-            String randomelement2 =number[randomindex2];
-            int randomindex3=random.nextInt(number.length);
-            String randomelement3 =number[randomindex3];
-             int randomindex4=random.nextInt(number.length);
-            String randomelement4 =number[randomindex4];
-             int randomindex5=random.nextInt(number.length);
-            String randomelement5 =number[randomindex5];
-          
-           NO=randomelement1+randomelement2+randomelement3+randomelement4+randomelement5;
-           // System.out.println(NO);
-            
+    public void invoiceno() {
+        String[] number = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        Random random = new Random();
+        int randomindex1 = random.nextInt(number.length);
+        String randomelement1 = number[randomindex1];
+        int randomindex2 = random.nextInt(number.length);
+        String randomelement2 = number[randomindex2];
+        int randomindex3 = random.nextInt(number.length);
+        String randomelement3 = number[randomindex3];
+        int randomindex4 = random.nextInt(number.length);
+        String randomelement4 = number[randomindex4];
+        int randomindex5 = random.nextInt(number.length);
+        String randomelement5 = number[randomindex5];
+
+        NO = randomelement1 + randomelement2 + randomelement3 + randomelement4 + randomelement5;
+        // System.out.println(NO);
+
 //            
 //        double n1 =number[Math.floor(Math.random())*62];
-        }
+    }
+
     public void clear() {
         txtinvoiceno.setText(null);
         txtinvoiceno.setEditable(true);
         txtcustomernm.setText(null);
         txtcustomernm.setEditable(true);
         txtnameofitem.setText(null);
+        combo.setValue(null);
         txtquantity.setText(null);
         txtrate.setText(null);
         txtamount.setText(null);
@@ -198,8 +206,23 @@ public class InvoicefxController extends Frame implements Initializable {
         txtgst.setText(null);
         txttotalamount.setText(null);
         total_amount = 0;
-    }
+       combo.setValue(null);
+        p_case.setSelected(false);
+        p_online.setSelected(false);
+        
 
+        invoiceno();
+        txtinvoiceno.setText(NO);
+    }
+//   //connection
+//    public void conn()
+//    {
+//        try {
+//                  Class.forName("com.mysql.jdbc.Driver");
+//            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb", "root", "");
+//        } catch (Exception e) {
+//        }
+//    }
     //display tableview
     ObservableList<medicine_variable> getdatelist() {
         ObservableList<medicine_variable> medicineslist = FXCollections.observableArrayList();
@@ -215,16 +238,13 @@ public class InvoicefxController extends Frame implements Initializable {
             while (rs.next()) {
                 m = new medicine_variable(rs.getString("name_of_item"), rs.getInt("qty"), rs.getFloat("rate"), rs.getFloat("amount"), rs.getDate("mfg_date"), rs.getDate("Expire_date"), rs.getInt("invoice_no"));
                 medicineslist.add(m);
-
             }
 
         } catch (Exception e) {
             System.out.println(e);
         }
         return medicineslist;
-
     }
-    
 
     public void display() {
         try {
@@ -237,17 +257,76 @@ public class InvoicefxController extends Frame implements Initializable {
             date.setCellValueFactory(new PropertyValueFactory<medicine_variable, Date>("date"));
             expiredate1.setCellValueFactory(new PropertyValueFactory<medicine_variable, Date>("edate"));
             ino.setCellValueFactory(new PropertyValueFactory<medicine_variable, Integer>("invoice_no"));
-              
+      
             tableview.setItems(list);
         } catch (Exception e) {
             System.out.println(e + "not display");
         }
     }
+//    count the qty and set the current stock 
 
-    ObservableList<medicine_variable> getdatasearch() {
-        ObservableList<medicine_variable> invoicesearch = FXCollections.observableArrayList();
+    public void meditbl_qty()
+    {
+        String co=combo.getValue();
+        try {
+              Class.forName("com.mysql.jdbc.Driver");
+             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb", "root", "");
+              PreparedStatement p = c.prepareStatement("select qty from meditbl where mname like '%"+co+"%'");
+              
+             ResultSet result = p.executeQuery();
+             while(result.next())
+             {
+               
+                 q_t=result.getInt("qty");
+             }
+            int current_q=Integer.parseInt(txtquantity.getText());
+            int current_qty=q_t-current_q;
+//            System.out.println(current_qty);
+            iobj o=new iobj();
+           if( o.updatecurrnetstock(current_qty, co)>0)
+           
+               System.out.println("update successfully");
+           
+            else
+                System.out.println("not update");
+        } catch (Exception e) {
+            System.out.println(e+" not working");
+        }
+    }
+    
+ //display for comboitems
+    ObservableList<String> medicinename = FXCollections.observableArrayList();
+
+    public void combo() {
+        try {
+           
+            Class.forName("com.mysql.jdbc.Driver");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb", "root", "");
+            PreparedStatement p = c.prepareStatement("select  mname from meditbl " );
+            ResultSet rs = p.executeQuery();
+            
+          //  String ms;
+            while (rs.next()) {
+
+                medicinename.add(rs.getString("mname"));
+            }
+             
+             
+            ObservableList<String> list = FXCollections.observableArrayList(medicinename);
+
+            combo.setItems(list);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+   
+    ObservableList<medicine_variable> invoicesearch = FXCollections.observableArrayList();
+
+    public void search() {
         String se = txtsearch.getText();
-
+           
         try {
             Class.forName("com.mysql.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb", "root", "");
@@ -268,17 +347,6 @@ public class InvoicefxController extends Frame implements Initializable {
                 invoicesearch.add(m);
 
             }
-
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return invoicesearch;
-    }
-    
-
-    public void search() {
-        try {
-            ObservableList<medicine_variable> l = getdatasearch();
             nm.setCellValueFactory(new PropertyValueFactory<medicine_variable, String>("name_of_item"));
             qty.setCellValueFactory(new PropertyValueFactory<medicine_variable, Integer>("qty"));
             rate.setCellValueFactory(new PropertyValueFactory<medicine_variable, Float>("rate"));
@@ -287,18 +355,20 @@ public class InvoicefxController extends Frame implements Initializable {
             expiredate1.setCellValueFactory(new PropertyValueFactory<medicine_variable, Date>("edate"));
             ino.setCellValueFactory(new PropertyValueFactory<medicine_variable, Integer>("invoice_no"));
 
-            tableview.setItems(l);
+            tableview.setItems(invoicesearch);
+
         } catch (Exception e) {
-            System.out.println(e + "not display");
+            System.out.println(e);
         }
 
     }
-
+//insert code
     @FXML
     private void btnsave(ActionEvent event) {
+          
         i = Integer.parseInt(txtinvoiceno.getText());
         cm = txtcustomernm.getText();
-        im = txtnameofitem.getText();
+        im = combo.getValue();
         q = Integer.parseInt(txtquantity.getText());
         r = Float.parseFloat(txtrate.getText());
         a = Float.parseFloat(txtamount.getText());
@@ -320,12 +390,13 @@ public class InvoicefxController extends Frame implements Initializable {
         if (txtcustomernm.isEditable()) {
             try {
                 total_amount = total_amount + a;
-               // System.out.println(total_amount);
+                // System.out.println(total_amount);
 
                 if (o.insertdat(i, cm, m, dis, g, total, p) > 0) {
+                      meditbl_qty();
                     Component rootPane = null;
                     JOptionPane.showMessageDialog(rootPane, "insert record", "insert", JOptionPane.INFORMATION_MESSAGE);
-
+              
                 } else {
                     Component rootPane = null;
 
@@ -352,14 +423,14 @@ public class InvoicefxController extends Frame implements Initializable {
             int discount = Integer.parseInt(txtdiscountno.getText());
             float dc = total_amount * discount / 100;
             float a_g = Float.parseFloat(txtgst.getText());
-          //  System.out.println(a_g);
+            //  System.out.println(a_g);
             String t_amount = String.valueOf(total_amount + a_g - dc);
             txttotalamount.setText(t_amount);
             //System.out.println(t_amount);
             float tm = Float.parseFloat(txttotalamount.getText());
 
             if (o.insertmedicine(im, q, r, a, d, ed, b, i) > 0) {
-
+               meditbl_qty();
                 Component rootPane = null;
                 JOptionPane.showMessageDialog(rootPane, "insert record", "insert", JOptionPane.INFORMATION_MESSAGE);
                 display();
@@ -380,11 +451,11 @@ public class InvoicefxController extends Frame implements Initializable {
 
     @FXML
     private void txtratekeyreleased(KeyEvent event) {
-        int qt = Integer.parseInt(txtquantity.getText());
+      
+              int qt = Integer.parseInt(txtquantity.getText());
         float rt = Float.parseFloat(txtrate.getText());
         String answer = String.valueOf(qt * rt);
         txtamount.setText(answer);
-
     }
 
     @FXML
@@ -402,7 +473,7 @@ public class InvoicefxController extends Frame implements Initializable {
 
     @FXML
     private void btnsearch(ActionEvent event) {
-        getdatasearch();
+
         search();
 
     }
@@ -467,10 +538,11 @@ public class InvoicefxController extends Frame implements Initializable {
 
     @FXML
     private void btnadd(ActionEvent event) {
-        if (txtnameofitem.getText() != null) {
+        if (txtcustomernm.getText() != null) {
+            System.out.println("click");
             txtinvoiceno.setEditable(false);
             txtcustomernm.setEditable(false);
-            txtnameofitem.setText(null);
+//            txtnameofite.setText(null);
             txtquantity.setText(null);
             txtrate.setText(null);
             txtamount.setText(null);
@@ -516,17 +588,17 @@ public class InvoicefxController extends Frame implements Initializable {
     private void btnprint(ActionEvent event) throws JRException {
         c = connection();
         Map<String, Object> m = new HashMap<>();
-         m.put("invoiceno", Integer.parseInt(txtinvoiceno.getText()));
+        m.put("invoiceno", Integer.parseInt(txtinvoiceno.getText()));
         m.put("customername", txtcustomernm.getText());
         m.put("mobileno", txtmobileno.getText());
-        if(p_case.isSelected())
-              m.put("payment", p_case.getText());
-        else
+        if (p_case.isSelected()) {
+            m.put("payment", p_case.getText());
+        } else {
             m.put("payment", p_online.getText());
+        }
         m.put("discount", txtdiscountno.getText());
-        m.put("gst",txtgst.getText());
+        m.put("gst", txtgst.getText());
         m.put("total", txttotalamount.getText());
-        
 
         jr = JasperCompileManager.compileReport("D:\\java\\.net\\projectfx\\src\\projectfx\\report1.jrxml");
         jp = JasperFillManager.fillReport(jr, m, c);
@@ -539,4 +611,54 @@ public class InvoicefxController extends Frame implements Initializable {
 
     }
 
+
+
+
+
+
+    @FXML
+    private void assign(MouseEvent event) {
+//         txtrate.setText("null");
+         String cb=combo.getValue();
+          try {
+           
+            Class.forName("com.mysql.jdbc.Driver");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb", "root", "");
+            PreparedStatement p = c.prepareStatement("select  *from meditbl  where mname='"+cb+"'" );
+            ResultSet rs = p.executeQuery();
+//            current_variable cv;
+          //  String ms;
+            while (rs.next()) {
+
+
+                    txtrate.setText(String.valueOf(rs.getFloat("rate")));
+                       mfgdate.setValue(rs.getDate("mfg_date").toLocalDate());
+                     expiredate.setValue(rs.getDate("exp_date").toLocalDate());
+                             
+                     txtbatchno.setText(rs.getString("batch"));
+            }
+             
+          
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    
+    }
+
+    @FXML
+    private void com(ActionEvent event) {
+    }
+
+    @FXML
+    private void textassign(InputMethodEvent event) {
+    }
+
+    @FXML
+    private void textassign(KeyEvent event) {
+    }
 }
+        
+        
+    
+
+

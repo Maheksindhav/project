@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="invoice_anchorpane" prefHeight="823.0" prefWidth="1245.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.InvoicefxController">
+<AnchorPane id="AnchorPane" fx:id="invoice_anchorpane" onKeyPressed="#textassign" prefHeight="823.0" prefWidth="1245.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.InvoicefxController">
    <children>
       <VBox layoutX="20.0" layoutY="113.0" prefHeight="220.0" prefWidth="154.0" spacing="30.0">
          <children>
@@ -66,13 +66,13 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="combo" prefHeight="31.0" prefWidth="204.0" />
-            <TextField fx:id="txtquantity" promptText="Enter Quantity">
+            <ComboBox fx:id="combo" onAction="#com" onMouseReleased="#assign" prefHeight="31.0" prefWidth="204.0" promptText="Select medicine name" style="-fx-background-color: white;" />
+            <TextField fx:id="txtquantity" onKeyReleased="#txtratekeyreleased" promptText="Enter Quantity">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="txtrate" onKeyReleased="#txtratekeyreleased" promptText="Enter Rate">
+            <TextField fx:id="txtrate" promptText="Enter Rate">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
@@ -308,7 +308,7 @@
             <Image url="@icons8-search-40.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tableview" layoutX="168.0" layoutY="463.0" prefHeight="305.0" prefWidth="912.0">
+      <TableView fx:id="tableview" layoutX="168.0" layoutY="463.0" onInputMethodTextChanged="#textassign" prefHeight="305.0" prefWidth="912.0">
          <columns>
             <TableColumn fx:id="nm" prefWidth="153.0" text="Name_of_items" />
             <TableColumn fx:id="qty" prefWidth="119.0" text="Quantity" />
@@ -336,7 +336,7 @@
             </RadioButton>
          </children>
       </HBox>
-      <Button fx:id="print" layoutX="1080.0" layoutY="30.0" lineSpacing="5.0" mnemonicParsing="false" onAction="#btnprint" prefHeight="6.0" prefWidth="115.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#303395 0%,#27F0F0 100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Print" textFill="WHITE">
+      <Button fx:id="print" layoutX="1080.0" layoutY="30.0" lineSpacing="5.0" mnemonicParsing="false" onAction="#btnprint" prefHeight="6.0" prefWidth="115.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#051650 0%,#123499  100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Print" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
