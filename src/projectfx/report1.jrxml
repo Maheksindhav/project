@@ -46,7 +46,7 @@
 	<title>
 		<band height="118" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="0" width="660" height="118" backcolor="#00CCCC" uuid="3357dfa8-0748-4d74-9867-4724ac9833c2"/>
+				<reportElement x="0" y="0" width="680" height="118" backcolor="#00CCCC" uuid="3357dfa8-0748-4d74-9867-4724ac9833c2"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="179" y="20" width="289" height="40" forecolor="#F0F0F0" backcolor="#33FF99" uuid="5aaa8335-bad6-48ad-89be-f41dc8e4a945"/>

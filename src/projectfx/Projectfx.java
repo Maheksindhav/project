@@ -26,7 +26,7 @@ public class Projectfx extends Application {
     public void start(Stage primaryStage) throws IOException {
        
         
-         Parent root =FXMLLoader.load(getClass().getResource("invoicefx.fxml"));
+         Parent root =FXMLLoader.load(getClass().getResource("displaymedicines.fxml"));
       
         
         Scene scene = new Scene(root);
