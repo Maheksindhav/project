@@ -26,13 +26,14 @@ public class Projectfx extends Application {
     public void start(Stage primaryStage) throws IOException {
        
         
-         Parent root =FXMLLoader.load(getClass().getResource("displaymedicines.fxml"));
+         Parent root =FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
       
         
         Scene scene = new Scene(root);
-      scene.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
+      scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
        
         primaryStage.setScene(scene);
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

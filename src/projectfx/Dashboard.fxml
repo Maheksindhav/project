@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="split" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="2022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.DashboardController">
+  <items>
+    <AnchorPane fx:id="pane1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="251.0" style="-fx-background-color: linear-gradient(to bottom,#0C7BB3,#9EBAF3);">
+         <children>
+            <VBox layoutX="14.0" layoutY="148.0" prefHeight="408.0" prefWidth="232.0">
+               <children>
+                  <MenuButton mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" styleClass="my-menu-button" text="Patient Master" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem id="p1" mnemonicParsing="false" style="-fx-font-size: 17px; -fx-cursor: hand;" text="Manage Patients Record" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton fx:id="menu111" mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" text="Manage Category" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#cateClick" style="-fx-font-size: 17px;" text="Add Category" />
+                        <MenuItem mnemonicParsing="false" onAction="#viewCateClick" style="-fx-font-size: 17px;" text="View Category" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" text="Invoice" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="Generate Bill" />
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="Add Purchase Invoice" />
+                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="View Purchase Invoice" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton fx:id="menu11111" mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" text="Manage Stock" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#AddStockClick" style="-fx-font-size: 17px;" text="Add Stock" />
+                        <MenuItem mnemonicParsing="false" onAction="#reorderclick" style="-fx-font-size: 17px;" text="Reorder Stock" />
+                        <MenuItem mnemonicParsing="false" onAction="#ReturnClick" style="-fx-font-size: 17px;" text="Return Stock" />
+                        <MenuItem mnemonicParsing="false" onAction="#ViewReorderClick" style="-fx-font-size: 17px;" text="View Reorder List" />
+                        <MenuItem mnemonicParsing="false" onAction="#ViewReturnStockClick" style="-fx-font-size: 17px;" text="View ReturnStock List " />
+                        <MenuItem mnemonicParsing="false" onAction="#CompanyReceived" style="-fx-font-size: 17px;" text="Company Received ReturnStock" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton fx:id="menu11112" mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" text="Company Master" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#companyClick" style="-fx-font-size: 17px;" text="Add Company" />
+                        <MenuItem mnemonicParsing="false" onAction="#manageCompnay" style="-fx-font-size: 17px;" text="Manage company" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+                  <MenuButton fx:id="menu111121" mnemonicParsing="false" prefHeight="55.0" prefWidth="232.0" style="-fx-background-color: transparent;" text="Reports" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#StockReport" style="-fx-font-size: 17px;" text="Stock Report" />
+                        <MenuItem fx:id="i221" mnemonicParsing="false" style="-fx-font-size: 17px;" text="Sales Report" />
+                     </items>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MenuButton>
+               </children>
+            </VBox>
+            <ScrollPane fx:id="pn2" layoutX="252.0" layoutY="-2.0" prefHeight="850.0" prefWidth="1771.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" />
+            <ImageView fitHeight="101.0" fitWidth="113.0" layoutX="39.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@arror.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
