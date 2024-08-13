@@ -6,8 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -23,7 +21,7 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                      <items>
-                        <MenuItem id="p1" mnemonicParsing="false" style="-fx-font-size: 17px; -fx-cursor: hand;" text="Manage Patients Record" />
+                        <MenuItem id="p1" mnemonicParsing="false" onAction="#details" style="-fx-font-size: 17px; -fx-cursor: hand;" text="Manage Patients Record" />
                      </items>
                      <effect>
                         <DropShadow />
@@ -52,9 +50,9 @@
                         <Font name="System Bold" size="17.0" />
                      </font>
                      <items>
-                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="Generate Bill" />
-                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="Add Purchase Invoice" />
-                        <MenuItem mnemonicParsing="false" style="-fx-font-size: 17px;" text="View Purchase Invoice" />
+                        <MenuItem mnemonicParsing="false" onAction="#invoice" style="-fx-font-size: 17px;" text="Generate Bill" />
+                        <MenuItem mnemonicParsing="false" onAction="#purchase" style="-fx-font-size: 17px;" text="Add Purchase Invoice" />
+                        <MenuItem mnemonicParsing="false" onAction="#view" style="-fx-font-size: 17px;" text="View Purchase Invoice" />
                      </items>
                      <effect>
                         <DropShadow />
@@ -115,11 +113,6 @@
                </children>
             </VBox>
             <ScrollPane fx:id="pn2" layoutX="252.0" layoutY="-2.0" prefHeight="850.0" prefWidth="1771.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" />
-            <ImageView fitHeight="101.0" fitWidth="113.0" layoutX="39.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@arror.png" />
-               </image>
-            </ImageView>
          </children></AnchorPane>
   </items>
 </SplitPane>

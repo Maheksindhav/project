@@ -22,8 +22,6 @@ public class DashboardController implements Initializable {
     @FXML
     private AnchorPane pane1;
     @FXML
-    private ImageView imgdash;
-    @FXML
     private MenuButton menu111;
     @FXML
     private MenuButton menu11111;
@@ -188,6 +186,59 @@ public class DashboardController implements Initializable {
         try {
             ap.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("imageForm.fxml"));
+            ap = loader.load();
+            pn2.setContent(ap);
+            ap.prefHeightProperty().bind(pn2.heightProperty());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @FXML
+    private void invoice(ActionEvent event) {
+         try {
+            ap.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("invoicefx.fxml"));
+            ap = loader.load();
+            pn2.setContent(ap);
+            ap.prefHeightProperty().bind(pn2.heightProperty());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+    }
+
+    @FXML
+    private void purchase(ActionEvent event) {
+         try {
+            ap.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("purchase.fxml"));
+            ap = loader.load();
+            pn2.setContent(ap);
+            ap.prefHeightProperty().bind(pn2.heightProperty());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @FXML
+    private void view(ActionEvent event) {
+         try {
+            ap.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("displayinvoice.fxml"));
+            ap = loader.load();
+            pn2.setContent(ap);
+            ap.prefHeightProperty().bind(pn2.heightProperty());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    @FXML
+    private void details(ActionEvent event) {
+         try {
+            ap.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("displaymedicines.fxml"));
             ap = loader.load();
             pn2.setContent(ap);
             ap.prefHeightProperty().bind(pn2.heightProperty());
