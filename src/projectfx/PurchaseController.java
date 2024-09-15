@@ -54,18 +54,19 @@ public class PurchaseController implements Initializable {
      */
     byte[] photo = null;
     String filename = null;
-   
+
     static File selectedfile;
     @FXML
-   private DatePicker dt;
+    private DatePicker dt;
     @FXML
     private Label l;
     String fis;
     @FXML
     private AnchorPane anchor;
-     static Date date;
+    static Date date;
     @FXML
     private VBox box;
+        AnchorPane apn = new AnchorPane();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -82,8 +83,6 @@ public class PurchaseController implements Initializable {
     @FXML
     private void btncancel(ActionEvent event) {
     }
-    
-   
 
     @FXML
     private void filechoose(ActionEvent event) {
@@ -91,18 +90,33 @@ public class PurchaseController implements Initializable {
         FileChooser chooser = new FileChooser();
         chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
         selectedfile = chooser.showOpenDialog(new Stage());
-        date=Date.valueOf(dt.getValue());
+        date = Date.valueOf(dt.getValue());
         String f = selectedfile.getPath();
         try {
             if (selectedfile != null) {
 
-                AnchorPane pane = FXMLLoader.load(getClass().getResource("purchase.fxml"));
+////                AnchorPane pane = FXMLLoader.load(getClass().getResource("purchase.fxml"));
+//                anchor.getScene().getWindow().hide();
+//                Stage primaryStage = new Stage();
+//                Parent r = FXMLLoader.load(getClass().getResource("image.fxml"));
+//                Scene scene = new Scene(r);
+//                // scene.getStylesheets().add(getClass().getResource("medi_design.css").toExternalForm());
+//                primaryStage.setScene(scene);
+//                primaryStage.show();
                 anchor.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+                Parent root = loader.load();
+                DashboardController d = loader.getController();
+                FXMLLoader loading = new FXMLLoader(getClass().getResource("image.fxml"));
+                apn = loading.load();
+                d.pn2.setContent(apn);
+                apn.prefHeightProperty().bind(d.pn2.heightProperty());
                 Stage primaryStage = new Stage();
-                Parent r = FXMLLoader.load(getClass().getResource("image.fxml"));
-                Scene scene = new Scene(r);
-                // scene.getStylesheets().add(getClass().getResource("medi_design.css").toExternalForm());
+                Scene scene = new Scene(root);
+                scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
                 primaryStage.setScene(scene);
+                primaryStage.setMaximized(true);
                 primaryStage.show();
 
             } else {

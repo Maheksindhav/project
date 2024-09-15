@@ -43,6 +43,7 @@ public class ImageController implements Initializable {
     public ImageView img;
     @FXML
     private AnchorPane pane;
+    AnchorPane apn = new AnchorPane();
 
     /**
      * Initializes the controller class.
@@ -61,55 +62,64 @@ public class ImageController implements Initializable {
             FileInputStream fis = new FileInputStream(PurchaseController.selectedfile);
             Image i = new Image(fis);
             img.setImage(i);
-            Stage s=new Stage();
-            Parent r=FXMLLoader.load(getClass().getResource("purchase.fxml"));
-            Scene scane=new Scene(r);
-             s.setScene(scane);
-              s.show();
-            
+            Stage s = new Stage();
+            Parent r = FXMLLoader.load(getClass().getResource("purchase.fxml"));
+            Scene scane = new Scene(r);
+            s.setScene(scane);
+            s.show();
 
         } catch (Exception e) {
             System.out.println(e);
         }
 
     }
-    public void another()
-    {
+
+    public void another() {
         try {
-              AnchorPane p=FXMLLoader.load(getClass().getResource("image.fxml"));
-              pane.getScene().getWindow().hide();
-              
-            
+//              AnchorPane p=FXMLLoader.load(getClass().getResource("image.fxml"));
+//              pane.getScene().getWindow().hide();
+            pane.getScene().getWindow().hide();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            Parent root = loader.load();
+            DashboardController d = loader.getController();
+            FXMLLoader loading = new FXMLLoader(getClass().getResource("purchase.fxml"));
+            apn = loading.load();
+            d.pn2.setContent(apn);
+            apn.prefHeightProperty().bind(d.pn2.heightProperty());
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setMaximized(true);
+            primaryStage.show();
+
         } catch (Exception e) {
         }
-      
-        
+
     }
+
     @FXML
     private void yes(ActionEvent event) {
 
         try {
-         Date d=PurchaseController.date;
-        String f=PurchaseController.selectedfile.getPath();
-          
-        
-                         
-              iobj obj=new iobj();
+            Date d = PurchaseController.date;
+            String f = PurchaseController.selectedfile.getPath();
 
-                if (obj.insertimg(d, f)>0) {
-                     Component rootPane = null;
-                 JOptionPane.showMessageDialog(rootPane, "insert record", "insert", JOptionPane.INFORMATION_MESSAGE);
-                 another();
-               }
-                else
-                 {
-                   Component rootPane = null;
-                JOptionPane.showMessageDialog(rootPane, "try again", "try", JOptionPane.ERROR_MESSAGE);
-                 }
-        } catch (Exception e) {
+            iobj obj = new iobj();
+
+            if (obj.insertimg(d, f) > 0) {
                 Component rootPane = null;
-                JOptionPane.showMessageDialog(rootPane, e, "try", JOptionPane.ERROR_MESSAGE);
-                
+                JOptionPane.showMessageDialog(rootPane, "Set Image", "insert", JOptionPane.INFORMATION_MESSAGE);
+                another();
+            } else {
+                Component rootPane = null;
+                JOptionPane.showMessageDialog(rootPane, "try again", "try", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            Component rootPane = null;
+            JOptionPane.showMessageDialog(rootPane, e, "try", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 

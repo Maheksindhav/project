@@ -153,12 +153,12 @@ public class ReturnStockController implements Initializable {
            
              FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
              Parent root = loader.load();
-               DashboardController d = loader.getController();
-               FXMLLoader loading = new FXMLLoader(getClass().getResource("vieworder.fxml"));
-               apn = loading.load();
-               d.pn2.setContent(apn);
-               apn.prefHeightProperty().bind(d.pn2.heightProperty());
-              Stage primaryStage = new Stage();
+              DashboardController d = loader.getController();
+              FXMLLoader loading = new FXMLLoader(getClass().getResource("vieworder.fxml"));
+              apn = loading.load();
+              d.pn2.setContent(apn);
+              apn.prefHeightProperty().bind(d.pn2.heightProperty());
+             Stage primaryStage = new Stage();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
             primaryStage.setScene(scene);

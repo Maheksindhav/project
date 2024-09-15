@@ -34,6 +34,7 @@ public class ViewinvoiceController implements Initializable {
     private AnchorPane anchor;
     @FXML
     private Button btnback;
+       AnchorPane apn = new AnchorPane();
 
     /**
      * Initializes the controller class.
@@ -43,9 +44,9 @@ public class ViewinvoiceController implements Initializable {
         // TODO
 
         try {
-         FileInputStream file=new FileInputStream(DisplayinvoiceController.path);
-        Image i=new Image(file);
-        viewimages.setImage(i);
+            FileInputStream file = new FileInputStream(DisplayinvoiceController.path);
+            Image i = new Image(file);
+            viewimages.setImage(i);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -53,19 +54,34 @@ public class ViewinvoiceController implements Initializable {
 
     @FXML
     private void btnback(ActionEvent event) {
-        
+
         try {
-            AnchorPane a=FXMLLoader.load(getClass().getResource("viewinvoice.fxml"));
             anchor.getScene().getWindow().hide();
-            Stage s=new Stage();
-            Parent p=FXMLLoader.load(getClass().getResource("displayinvoice.fxml"));
-            Scene sc=new Scene(p);
-            sc.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
-            s.setScene(sc);
-            s.show();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+            Parent root = loader.load();
+            DashboardController d = loader.getController();
+            FXMLLoader loading = new FXMLLoader(getClass().getResource("displayinvoice.fxml"));
+            apn = loading.load();
+            d.pn2.setContent(apn);
+            apn.prefHeightProperty().bind(d.pn2.heightProperty());
+            Stage primaryStage = new Stage();
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setMaximized(true);
+            primaryStage.show();
+//            AnchorPane a=FXMLLoader.load(getClass().getResource("viewinvoice.fxml"));
+//            anchor.getScene().getWindow().hide();
+//            Stage s=new Stage();
+//            Parent p=FXMLLoader.load(getClass().getResource("displayinvoice.fxml"));
+//            Scene sc=new Scene(p);
+//            sc.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
+//            s.setScene(sc);
+//            s.show();
         } catch (Exception e) {
         }
-        
+
     }
 
 }

@@ -52,6 +52,7 @@ public class DisplayinvoiceController implements Initializable {
     private TableColumn<String, Button> btn;
     @FXML
     private AnchorPane thisanchor;
+    AnchorPane apn = new AnchorPane();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -101,23 +102,40 @@ public class DisplayinvoiceController implements Initializable {
                         Button B = new Button("Show image");
                         B.setPrefSize(150, 30);
                         B.setId("button");
-                        
+
                         setGraphic(B);
                         B.setOnAction((event) -> {
                             System.out.println("hello");
                             path = tableview.getSelectionModel().getSelectedItem().images;
                             System.out.println(path);
                             try {
-                                AnchorPane pane = FXMLLoader.load(getClass().getResource("displayinvoice.fxml"));
-                                thisanchor.getScene().getWindow().hide();
-                                Stage stage = new Stage();
-                                Parent p = FXMLLoader.load(getClass().getResource("viewinvoice.fxml"));
-                                Scene s = new Scene(p);
-                                  s.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
-                                stage.setScene(s);
-                                stage.show();
-                                System.out.println("click");
 
+                                thisanchor.getScene().getWindow().hide();
+
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("Dashboard.fxml"));
+                                Parent root = loader.load();
+                                DashboardController d = loader.getController();
+                                FXMLLoader loading = new FXMLLoader(getClass().getResource("viewinvoice.fxml"));
+                                apn = loading.load();
+                                d.pn2.setContent(apn);
+                                apn.prefHeightProperty().bind(d.pn2.heightProperty());
+                                Stage primaryStage = new Stage();
+                                Scene scene = new Scene(root);
+                                scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
+                                primaryStage.setScene(scene);
+                                primaryStage.setMaximized(true);
+                                primaryStage.show();
+                              
+
+//                                AnchorPane pane = FXMLLoader.load(getClass().getResource("displayinvoice.fxml"));
+//                                thisanchor.getScene().getWindow().hide();
+//                                Stage stage = new Stage();
+//                                Parent p = FXMLLoader.load(getClass().getResource("viewinvoice.fxml"));
+//                                Scene s = new Scene(p);
+//                                  s.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
+//                                stage.setScene(s);
+//                                stage.show();
+//                                System.out.println("click");
                             } catch (Exception e) {
                                 System.out.println(e);
                             }

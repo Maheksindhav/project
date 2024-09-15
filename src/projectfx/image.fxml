@@ -7,30 +7,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="769.0" prefWidth="1275.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.ImageController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="769.0" prefWidth="1479.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.ImageController">
    <children>
-      <Label layoutX="537.0" layoutY="31.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 0%,#6f085a 0%,#c51c53 100%);" text="Upload image">
+      <Label layoutX="719.0" layoutY="18.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 0%,#6f085a 0%,#c51c53 100%);" text="Upload image">
          <font>
             <Font name="Times New Roman Bold" size="34.0" />
          </font>
       </Label>
-      <ImageView fx:id="img" fitHeight="475.0" fitWidth="836.0" layoutX="267.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnyes" layoutX="536.0" layoutY="617.0" mnemonicParsing="false" onAction="#yes" prefHeight="39.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#184E68 0%,#57CA85 100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Set" textFill="WHITE">
+      <ImageView fx:id="img" fitHeight="475.0" fitWidth="836.0" layoutX="408.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnyes" layoutX="665.0" layoutY="617.0" mnemonicParsing="false" onAction="#yes" prefHeight="39.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#184E68 0%,#57CA85 100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Set" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="463.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="650.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons8-image-60.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnno" layoutX="708.0" layoutY="617.0" mnemonicParsing="false" onAction="#btnno" prefHeight="39.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#F68670 0%,#EFA451 100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Cancel" textFill="WHITE">
+      <Button fx:id="btnno" layoutX="843.0" layoutY="617.0" mnemonicParsing="false" onAction="#btnno" prefHeight="39.0" prefWidth="149.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#F68670 0%,#EFA451 100%); -fx-border-color: white; -fx-background-radius: 10px; -fx-border-radius: 10px;" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="759.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="47.0" fitWidth="62.0" layoutX="945.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icons8-image-60.png" />
          </image>

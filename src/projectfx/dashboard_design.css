@@ -13,3 +13,19 @@ and open the template in the editor.
 #pn2{
     -fx-background-color:  linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);
 }
+#btnback
+{
+       -fx-background-image: url("arror.png");
+       -fx-background-size: cover;
+}
+#button
+{
+    -fx-background-color:  linear-gradient(from 0% 0% to 100% 0%,#303395 0%,#27F0F0 100%);
+    -fx-cursor:hand;
+    -fx-border-color:white;
+    -fx-background-radius: 10px;
+    -fx-border-radius:10px;
+    -fx-font-weight:bold;
+    -fx-text-fill:white;
+    
+}

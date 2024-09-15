@@ -43,7 +43,7 @@ public class DashboardController implements Initializable {
     @FXML
     private void cateClick(ActionEvent event) {
         try {
-            ap.getChildren().clear();
+            ap.getChildren().clear();//clear 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
             ap = loader.load();
             ap.getStylesheets().add(getClass().getResource("category_design.css").toExternalForm());
@@ -227,6 +227,7 @@ public class DashboardController implements Initializable {
             ap.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("displayinvoice.fxml"));
             ap = loader.load();
+            ap.getStylesheets().add(getClass().getResource("purchasecss.css").toExternalForm());
             pn2.setContent(ap);
             ap.prefHeightProperty().bind(pn2.heightProperty());
         } catch (Exception e) {

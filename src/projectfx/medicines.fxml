@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="body" fx:id="body" prefHeight="700.0" prefWidth="1573.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.MedicinesController">
+<AnchorPane id="body" fx:id="body" prefHeight="700.0" prefWidth="1573.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.MedicinesController">
    <children>
-      <Label fx:id="title" layoutX="564.0" layoutY="17.0" text="Shivam Medicines Record">
+      <Label fx:id="title" layoutX="676.0" layoutY="21.0" text="Medicines Record">
          <font>
             <Font name="Times New Roman Bold" size="34.0" />
          </font>
@@ -243,7 +243,7 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="56.0" layoutX="509.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="46.0" fitWidth="56.0" layoutX="618.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/icons8-medical-store-60.png" />
          </image>
