@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="767.0" prefWidth="1578.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.StockController">
+<AnchorPane id="AnchorPane" prefHeight="767.0" prefWidth="1646.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.StockController">
    <children>
       <Label layoutX="692.0" layoutY="19.0" prefHeight="40.0" prefWidth="349.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 0%,#6f085a 0%,#c51c53 100%);" text="Stock Management">
          <font>

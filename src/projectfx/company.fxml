@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1490.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.CompanyController">
+<AnchorPane id="AnchorPane" prefHeight="1030.0" prefWidth="1765.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.CompanyController">
    <children>
       <Label fx:id="title" layoutX="1113.0" layoutY="135.0" style="-fx-text-fill: linear-gradient(from 0% 0% to 100% 0%,#6f085a 0%,#c51c53 100%);" text="Company Master">
          <font>

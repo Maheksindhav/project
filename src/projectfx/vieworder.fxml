@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="Viewbody" prefHeight="605.0" prefWidth="1598.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.VieworderController">
+<AnchorPane id="AnchorPane" fx:id="Viewbody" prefHeight="605.0" prefWidth="1688.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.VieworderController">
    <children>
       <TableView fx:id="tbl" layoutX="11.0" layoutY="87.0" prefHeight="314.0" prefWidth="1576.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);">
          <columns>
