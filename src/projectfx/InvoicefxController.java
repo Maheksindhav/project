@@ -395,12 +395,12 @@ public class InvoicefxController extends Frame implements Initializable {
                 if (o.insertdat(i, cm, m, dis, g, total, p) > 0) {
                       meditbl_qty();
                     Component rootPane = null;
-                    JOptionPane.showMessageDialog(rootPane, "insert record", "insert", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane,  "Generate Bill", "Invoce", JOptionPane.INFORMATION_MESSAGE);
               
                 } else {
                     Component rootPane = null;
 
-                    JOptionPane.showMessageDialog(rootPane, "try again", "try", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "Somethink wrong", "Try again", JOptionPane.ERROR_MESSAGE);
                 }
                 if (o.insertmedicine(im, q, r, a, d, ed, b, i) > 0) {
                     System.out.println("insert record in medicines table ");
@@ -432,11 +432,11 @@ public class InvoicefxController extends Frame implements Initializable {
             if (o.insertmedicine(im, q, r, a, d, ed, b, i) > 0) {
                meditbl_qty();
                 Component rootPane = null;
-                JOptionPane.showMessageDialog(rootPane, "insert record", "insert", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Generate Bill", "Invoce", JOptionPane.INFORMATION_MESSAGE);
                 display();
             } else {
                 Component rootPane = null;
-                JOptionPane.showMessageDialog(rootPane, "try again", "try", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "Somethink wrong", "Try again", JOptionPane.ERROR_MESSAGE);
             }
 
             if (o.updateinvoice(a_g, tm, i) > 0) {
