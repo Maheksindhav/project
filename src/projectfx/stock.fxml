@@ -203,26 +203,6 @@
                         <Font name="Times New Roman Bold" size="17.0" />
                      </font>
                   </TextField>
-                  <Label layoutX="791.0" layoutY="248.0" text="GST 15% :">
-                     <font>
-                        <Font name="Times New Roman Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="gs" editable="false" layoutX="941.0" layoutY="245.0" prefHeight="25.0" prefWidth="181.0" promptText="15% GST">
-                     <font>
-                        <Font name="Times New Roman Bold" size="17.0" />
-                     </font>
-                  </TextField>
-                  <Label layoutX="791.0" layoutY="296.0" text="Total Amount :">
-                     <font>
-                        <Font name="Times New Roman Bold" size="20.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="tamot" editable="false" layoutX="941.0" layoutY="292.0" prefHeight="25.0" prefWidth="181.0" promptText="Total Amount">
-                     <font>
-                        <Font name="Times New Roman Bold" size="17.0" />
-                     </font>
-                  </TextField>
                   <ImageView fitHeight="51.0" fitWidth="56.0" layoutX="378.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/reorderstock.png" />
@@ -240,7 +220,7 @@
             <DropShadow />
          </effect>
       </SplitPane>
-      <TableView fx:id="tbl" layoutX="36.0" layoutY="658.0" prefHeight="90.0" prefWidth="1512.0" visible="false">
+      <TableView fx:id="tbl" layoutX="36.0" layoutY="658.0" prefHeight="90.0" prefWidth="1335.0" visible="false">
          <columns>
             <TableColumn fx:id="mid" prefWidth="101.60000610351562" text="Medicine_id" />
             <TableColumn fx:id="mname" prefWidth="123.20001220703125" text="Medicine_Name" />
@@ -252,9 +232,7 @@
             <TableColumn fx:id="company_name" prefWidth="169.5999755859375" text="Company_Name" />
             <TableColumn fx:id="amt" minWidth="0.0" prefWidth="136.79998779296875" text="Amount" />
             <TableColumn fx:id="category" prefWidth="111.20001220703125" text="Category" />
-            <TableColumn fx:id="gst" prefWidth="92.7999267578125" text="GST 15%" />
-            <TableColumn fx:id="tot_amt" prefWidth="130.4000244140625" text="Total Amount" />
-            <TableColumn fx:id="reorder" prefWidth="101.599853515625" />
+            <TableColumn fx:id="reorder" prefWidth="138.0" />
          </columns>
          <cursor>
             <Cursor fx:constant="DISAPPEAR" />

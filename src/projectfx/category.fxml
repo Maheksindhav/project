@@ -53,7 +53,7 @@
             <DropShadow />
          </effect>
       </Button>
-      <VBox fx:id="vb" prefHeight="1020.0" prefWidth="959.0" />
+      <VBox fx:id="vb" prefHeight="1117.0" prefWidth="959.0" />
       <ImageView fitHeight="46.0" fitWidth="56.0" layoutX="1023.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/det.png" />

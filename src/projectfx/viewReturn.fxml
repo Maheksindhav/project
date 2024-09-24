@@ -26,8 +26,6 @@
             <TableColumn fx:id="company_name" prefWidth="169.5999755859375" text="Company_Name" />
             <TableColumn fx:id="amt" minWidth="0.0" prefWidth="136.79998779296875" text="Amount" />
             <TableColumn fx:id="category" prefWidth="111.20001220703125" text="Category" />
-            <TableColumn fx:id="gst" prefWidth="92.7999267578125" text="GST 15%" />
-            <TableColumn fx:id="tot_amt" prefWidth="108.0" text="Total Amount" />
             <TableColumn fx:id="order_date" prefWidth="189.60009765625" text="Reorder Date &amp; Time" />
             <TableColumn fx:id="return_date" prefWidth="212.7999267578125" text="Return_Order Date &amp; Time" />
          </columns>

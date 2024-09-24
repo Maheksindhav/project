@@ -53,10 +53,11 @@ public class LoginController implements Initializable {
                 loginbody.getScene().getWindow().hide(); // Hide login window
 
                 Stage primaryStage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("medicines.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
                 Scene scene = new Scene(root);
-                scene.getStylesheets().add(getClass().getResource("medi_design.css").toExternalForm());
+                scene.getStylesheets().add(getClass().getResource("dashboard_design.css").toExternalForm());
                 primaryStage.setScene(scene);
+                primaryStage.setMaximized(true);
                 primaryStage.show();
 
             } else {

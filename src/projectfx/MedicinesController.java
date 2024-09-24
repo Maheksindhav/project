@@ -49,10 +49,7 @@ public class MedicinesController implements Initializable {
     private TextField rat;
     @FXML
     private TextField amot;
-    @FXML
-    private TextField gs;
-    @FXML
-    private TextField tamot;
+
     @FXML
     private DatePicker mf;
     @FXML
@@ -100,10 +97,7 @@ public class MedicinesController implements Initializable {
     private TableColumn<tbldata, Float> amt;
     @FXML
     private TableColumn<tbldata, String> batch;
-    @FXML
-    private TableColumn<tbldata, Float> gst;
-    @FXML
-    private TableColumn<tbldata, Float> tot_amt;
+
     @FXML
     private TableColumn<tbldata, String> category;
     @FXML
@@ -144,8 +138,8 @@ public class MedicinesController implements Initializable {
         comp=company.getSelectionModel().getSelectedItem();
         amount = Float.parseFloat(amot.getText());
         cate = cat.getSelectionModel().getSelectedItem();
-        gstt = Float.parseFloat(gs.getText());
-        totamt = Float.parseFloat(tamot.getText());
+//        gstt = Float.parseFloat(gs.getText());
+//        totamt = Float.parseFloat(tamot.getText());
     }
     
     public void clear()
@@ -161,10 +155,10 @@ public class MedicinesController implements Initializable {
             company.setValue(null);
             cat.getSelectionModel().clearSelection();
             cat.setValue(null);
-            gs.setText(null);
+//            gs.setText(null);
             amot.setText(null);
             searchText.setText(null);
-            tamot.setText(null);
+//            tamot.setText(null);
             medi_id++;
             id.setText(String.valueOf(medi_id));
     }
@@ -173,8 +167,8 @@ public class MedicinesController implements Initializable {
     private void btnnew(ActionEvent event) {
         inform();
         try {
-            if (cr.insertdata(newid, name, qtyy, rt, m, expiry, b,comp, cate, amount, gstt, totamt) > 0 && cr.CategoryProduct(name,cate)>0) {
-                if (cr.totalAdd(name,newid)>0) {
+            if (cr.insertdata(newid, name, qtyy, rt, m, expiry, b,comp, cate, amount) > 0 && cr.CategoryProduct(name,cate)>0) {
+                if (cr.totalAdd(qtyy,name,newid)>0) {
                      JOptionPane.showMessageDialog(null, "Medicines Added Successfully", "Adding ", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else{
@@ -199,10 +193,10 @@ public class MedicinesController implements Initializable {
                 int a = Integer.parseInt(Qt.getText());
                 float b = Float.parseFloat(rat.getText());
                 amot.setText(String.valueOf(a * b));
-                float at = Float.parseFloat(amot.getText());
-                gs.setText(String.valueOf((at * 18) / 100));
-                float gss = Float.parseFloat(gs.getText());
-                tamot.setText(String.valueOf(at + gss));
+//                float at = Float.parseFloat(amot.getText());
+//                gs.setText(String.valueOf((at * 18) / 100));
+//                float gss = Float.parseFloat(gs.getText());
+//                tamot.setText(String.valueOf(at + gss));
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex,"Total",JOptionPane.ERROR_MESSAGE);
@@ -224,8 +218,8 @@ public class MedicinesController implements Initializable {
         company.setValue(tbl.getSelectionModel().getSelectedItem().getCompany_name());
         amot.setText(String.valueOf(tbl.getSelectionModel().getSelectedItem().getAmt()));
         cat.setValue(tbl.getSelectionModel().getSelectedItem().getCategory());
-        gs.setText(String.valueOf(tbl.getSelectionModel().getSelectedItem().getGst()));
-        tamot.setText(String.valueOf(tbl.getSelectionModel().getSelectedItem().getTot_amt()));
+//        gs.setText(String.valueOf(tbl.getSelectionModel().getSelectedItem().getGst()));
+//        tamot.setText(String.valueOf(tbl.getSelectionModel().getSelectedItem().getTot_amt()));
         
         c=tbl.getSelectionModel().getSelectedItem().getMid();
     }
@@ -270,8 +264,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                         medi_id=r.getInt("mid");
                 tbl.setItems(listM);
             }
@@ -309,7 +302,7 @@ public class MedicinesController implements Initializable {
             if (Character.isAlphabetic(s.charAt(0)) || Character.isAlphabetic(4)) {
                 pst = conn.prepareStatement("select *from meditbl where mname like '%" + s + "%'  or mfg_date like '%" + s + "%'  or exp_date like '%" + s + "%' or batch like '%" + s + "%' or company_name like '%" + s + "%' or   category like '%" + s + "%' ");
             } else if (Character.isDigit(s.charAt(0))) {
-                pst = conn.prepareStatement("select *from meditbl where mid=" + s + " or qty=" + s + " or rate=" + s + "  or amt=" + s + "  or gst=" + s + " or tot_amt=" + s);
+                pst = conn.prepareStatement("select *from meditbl where mid=" + s + " or qty=" + s + " or rate=" + s + "  or amt=" + s );
             }
 
              r = pst.executeQuery();
@@ -319,8 +312,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"),r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                 tbl.setItems(listM);
                  load();
             }
@@ -341,8 +333,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                 tbl.setItems(listM);
                 load();
                
@@ -364,8 +355,8 @@ public class MedicinesController implements Initializable {
                 company_name.setCellValueFactory(new PropertyValueFactory<>("company_name"));
                 amt.setCellValueFactory(new PropertyValueFactory<>("amt"));
                 category.setCellValueFactory(new PropertyValueFactory<>("category"));
-                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
-                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
+//                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
+//                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
                 action.setCellFactory(col -> new TableCell<String, Button>() {
                     @Override
                     protected void updateItem(Button button, boolean empty) {
@@ -417,7 +408,7 @@ public class MedicinesController implements Initializable {
                             editButton.setOnAction(event -> {
                                  inform();
                                     try{
-                                            if (cr.updatedata(newid, name, qtyy, rt, m, expiry, b,comp, cate, amount, gstt, totamt) >0) {
+                                            if (cr.updatedata(newid, name, qtyy, rt, m, expiry, b,comp, cate, amount) >0) {
                                                 if (cr.totalUpdate(name, newid)>0) {
                                                      JOptionPane.showMessageDialog(null, "Changes are saved SuccessFully","Medicine Changes",JOptionPane.INFORMATION_MESSAGE);
                                                 }
@@ -451,8 +442,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                 
                 tbl.setItems(listM);
                 load();
@@ -474,8 +464,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                 
                 tbl.setItems(listM);
                 load();
@@ -498,8 +487,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                         
                 tbl.setItems(listM);
                 load();
@@ -526,7 +514,7 @@ public class MedicinesController implements Initializable {
             if (Character.isAlphabetic(s.charAt(0)) || Character.isAlphabetic(4)) {
                 pst = conn.prepareStatement("select *from meditbl where mname like '%" + s + "%'  or mfg_date like '%" + s + "%'  or exp_date like '%" + s + "%' or batch like '%" + s + "%' or category like '%" + s + "%' ");
             } else if (Character.isDigit(s.charAt(0))) {
-                pst = conn.prepareStatement("select *from meditbl where mid=" + s + " or qty=" + s + " or rate=" + s + "  or amt=" + s + "  or gst=" + s + " or tot_amt=" + s);
+                pst = conn.prepareStatement("select *from meditbl where mid=" + s + " or qty=" + s + " or rate=" + s + "  or amt=" + s );
             }
              r = pst.executeQuery();
             while (r.next()) {
@@ -535,8 +523,7 @@ public class MedicinesController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt")));
+                        r.getString("category")));
                 tbl.setItems(listM);
                  load();
             }

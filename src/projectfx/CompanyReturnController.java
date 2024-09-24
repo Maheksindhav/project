@@ -40,10 +40,7 @@ public class CompanyReturnController implements Initializable {
     private TableColumn<tblreturn,Float> amt;
     @FXML
     private TableColumn<tblreturn,String> category;
-    @FXML
-    private TableColumn<tblreturn,Float> gst;
-    @FXML
-    private TableColumn<tblreturn,Float> tot_amt;
+
     @FXML
     private TableColumn<tblreorder,Timestamp> order_date;
     @FXML
@@ -70,8 +67,8 @@ public class CompanyReturnController implements Initializable {
         company_name.setCellValueFactory(new PropertyValueFactory<>("company_name"));
         amt.setCellValueFactory(new PropertyValueFactory<>("amt"));
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
-        gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
-        tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
+//        gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
+//        tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
        order_date.setCellValueFactory(new PropertyValueFactory<>("order_date"));
        return_date.setCellValueFactory(new PropertyValueFactory<>("return_date"));
     }
@@ -98,8 +95,7 @@ public class CompanyReturnController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt"),r.getTimestamp("order_date"),r.getTimestamp("return_date")));
+                        r.getString("category"),r.getTimestamp("order_date"),r.getTimestamp("return_date")));
                 tbl.setItems(listM);
             }
         } catch (Exception e) {

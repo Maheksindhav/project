@@ -13,12 +13,12 @@ public class tblreturn {
             String batch,company_name;
              float amt;
          String category;
-           float gst;
-           float tot_amt;
+//           float gst;
+//           float tot_amt;
            Timestamp order_date;
            Timestamp return_date;
            
-        public tblreturn(int mid, String mname, int qty, float rate, Date mfg_date, Date exp_date, String batch, String company_name,float amt, String category, float gst, float tot_amt,Timestamp order_date,Timestamp return_date) {
+        public tblreturn(int mid, String mname, int qty, float rate, Date mfg_date, Date exp_date, String batch, String company_name,float amt, String category,Timestamp order_date,Timestamp return_date) {
                 this.mid = mid;
                 this.mname = mname;
                 this.qty = qty;
@@ -29,8 +29,8 @@ public class tblreturn {
                 this.company_name=company_name;
                 this.amt = amt;
                 this.category = category;
-                this.gst = gst;
-                this.tot_amt = tot_amt;
+//                this.gst = gst;
+//                this.tot_amt = tot_amt;
                 this.order_date = order_date;
                 this.return_date = return_date;
     }
@@ -79,13 +79,13 @@ public class tblreturn {
         return category;
     }
 
-    public float getGst() {
-        return gst;
-    }
-
-    public float getTot_amt() {
-        return tot_amt;
-    }
+//    public float getGst() {
+//        return gst;
+//    }
+//
+//    public float getTot_amt() {
+//        return tot_amt;
+//    }
 
     public void setMid(int mid) {
         this.mid = mid;
@@ -123,13 +123,13 @@ public class tblreturn {
         this.category = category;
     }
 
-    public void setGst(float gst) {
-        this.gst = gst;
-    }
-
-    public void setTot_amt(float tot_amt) {
-        this.tot_amt = tot_amt;
-    }
+//    public void setGst(float gst) {
+//        this.gst = gst;
+//    }
+//
+//    public void setTot_amt(float tot_amt) {
+//        this.tot_amt = tot_amt;
+//    }
 
     public Timestamp getOrder_date() {
         return order_date;

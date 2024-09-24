@@ -12,6 +12,7 @@ public class crud {
                   Class.forName("com.mysql.jdbc.Driver");
                  conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/jtb","root","");
             } catch (Exception e) {
+                System.out.println(e);
             }
           
         }
@@ -34,6 +35,9 @@ public class crud {
                   PreparedStatement pst=conn.prepareStatement("select username,password from user where username='"+unm+"' and password='"+passw+"'");
                   ResultSet r = pst.executeQuery();
                     if (r.next()) {
+                        PreparedStatement pstt = conn.prepareStatement("update user set islogin=1 where username=?");
+                        pstt.setString(1, unm);
+                        pstt.executeUpdate();
                           return true;
                     }
                     else{
@@ -46,10 +50,22 @@ public class crud {
               }
           }
           
-             public int insertdata(int id,String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,float g,float ta)
+          public int logout(String unm)
+          {
+              try {
+                  PreparedStatement pst = conn.prepareStatement("update user set islogin=0 where username=?");
+                   pst.setString(1, unm);
+                    return pst.executeUpdate();
+              } catch (Exception e) {
+                  System.out.println(e);
+                  return 0;
+              }
+          }
+          
+             public int insertdata(int id,String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt)
             {
                 try {
-                    PreparedStatement pst=conn.prepareStatement("insert into meditbl values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement pst=conn.prepareStatement("insert into meditbl values(?,?,?,?,?,?,?,?,?,?)");
                     pst.setInt(1, id);
                     pst.setString(2, nm);
                     pst.setInt(3, qty);
@@ -60,8 +76,8 @@ public class crud {
                     pst.setString(8, comp);
                     pst.setFloat(9, amt);
                     pst.setString(10, cate);
-                    pst.setFloat(11, g);
-                    pst.setFloat(12, ta);
+//                    pst.setFloat(11, g);
+//                    pst.setFloat(12, ta);
                     return pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);
@@ -69,11 +85,11 @@ public class crud {
                     
                 }
             }
-             public int updatedata(int id,String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,float g,float ta)
+             public int updatedata(int id,String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt)
             {
                 try {
-                    PreparedStatement pst=conn.prepareStatement("update meditbl set mname=?,qty=?,rate=?,mfg_date=?,exp_date=?,batch=?,company_name=?,amt=?,category=?,gst=?,tot_amt=? where mid=?");
-                    pst.setInt(12, id);
+                    PreparedStatement pst=conn.prepareStatement("update meditbl set mname=?,qty=?,rate=?,mfg_date=?,exp_date=?,batch=?,company_name=?,amt=?,category=? where mid=?");
+                    pst.setInt(10, id);
                     pst.setString(1, nm);
                     pst.setInt(2, qty);
                     pst.setFloat(3, r);
@@ -83,8 +99,8 @@ public class crud {
                     pst.setString(7, comp);
                     pst.setFloat(8, amt);
                     pst.setString(9, cate);
-                    pst.setFloat(10, g);
-                    pst.setFloat(11, ta);
+//                    pst.setFloat(10, g);
+//                    pst.setFloat(11, ta);
                     return pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);
@@ -118,10 +134,10 @@ public class crud {
               }
           }
           
-          public int reOrderAdd(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,float g,float ta)
+          public int reOrderAdd(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt)
           {
                try {
-                    PreparedStatement pst=conn.prepareStatement("insert into reordertbl(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category,gst,tot_amt) values(?,?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement pst=conn.prepareStatement("insert into reordertbl(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category) values(?,?,?,?,?,?,?,?,?)");
                     pst.setString(1, nm);
                     pst.setInt(2, qty);
                     pst.setFloat(3, r);
@@ -131,8 +147,8 @@ public class crud {
                     pst.setString(7, comp);
                     pst.setFloat(8, amt);
                     pst.setString(9, cate);
-                    pst.setFloat(10, g);
-                    pst.setFloat(11, ta);
+//                    pst.setFloat(10, g);
+//                    pst.setFloat(11, ta);
                     return pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);
@@ -152,10 +168,10 @@ public class crud {
               }
           }
           
-          public int returnAdd(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,float g,float ta,Timestamp or)
+          public int returnAdd(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,Timestamp or)
           {
                try {
-                    PreparedStatement pst=conn.prepareStatement("insert into returnstock(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category,gst,tot_amt,order_date) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement pst=conn.prepareStatement("insert into returnstock(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category,order_date) values(?,?,?,?,?,?,?,?,?,?)");
                     pst.setString(1, nm);
                     pst.setInt(2, qty);
                     pst.setFloat(3, r);
@@ -165,9 +181,9 @@ public class crud {
                     pst.setString(7, comp);
                     pst.setFloat(8, amt);
                     pst.setString(9, cate);
-                    pst.setFloat(10, g);
-                    pst.setFloat(11, ta);
-                    pst.setTimestamp(12, or);
+//                    pst.setFloat(10, g);
+//                    pst.setFloat(11, ta);
+                    pst.setTimestamp(10, or);
                     return pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);
@@ -266,12 +282,13 @@ public class crud {
               }
           }
           
-          public int totalAdd(String nm,int id)
+          public int totalAdd(int qty,String nm,int id)
           {
               try {
-                  PreparedStatement pst = conn.prepareStatement("insert into totaltbl(medi_name,medicine_id) values(?,?)");
-                  pst.setString(1, nm);
-                  pst.setInt(2, id);
+                  PreparedStatement pst = conn.prepareStatement("insert into totaltbl(current_stock,medi_name,medicine_id) values(?,?,?)");
+                  pst.setInt(1, qty);
+                  pst.setString(2, nm);
+                  pst.setInt(3, id);
                   return  pst.executeUpdate();
               } catch (Exception e) {
                   System.out.println(e);
@@ -347,10 +364,10 @@ public class crud {
               }
           }
           
-           public int CompnayReturnStock(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,float g,float ta,Timestamp or,Timestamp ret)
+           public int CompnayReturnStock(String nm,int qty,float r,Date mfg,Date exp,String batc,String comp,String cate,float amt,Timestamp or,Timestamp ret)
           {
                try {
-                    PreparedStatement pst=conn.prepareStatement("insert into companyreceived(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category,gst,tot_amt,order_date,return_date) values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    PreparedStatement pst=conn.prepareStatement("insert into companyreceived(mname,qty,rate,mfg_date,exp_date,batch,company_name,amt,category,order_date,return_date) values(?,?,?,?,?,?,?,?,?,?,?)");
                     pst.setString(1, nm);
                     pst.setInt(2, qty);
                     pst.setFloat(3, r);
@@ -360,10 +377,10 @@ public class crud {
                     pst.setString(7, comp);
                     pst.setFloat(8, amt);
                     pst.setString(9, cate);
-                    pst.setFloat(10, g);
-                    pst.setFloat(11, ta);
-                    pst.setTimestamp(12, or);
-                    pst.setTimestamp(13, ret);
+//                    pst.setFloat(10, g);
+//                    pst.setFloat(11, ta);
+                    pst.setTimestamp(10, or);
+                    pst.setTimestamp(11, ret);
                     return pst.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);
@@ -376,6 +393,19 @@ public class crud {
                try {
                    PreparedStatement pst = conn.prepareStatement("delete from returnstock where mid = ?");
                    pst.setInt(1, n);
+                   return pst.executeUpdate();
+               } catch (Exception e) {
+                   System.out.println(e);
+                   return 0;
+               }
+           }
+           
+           public int UpdateStockMedicine(int qty,String nm)
+           {
+               try {
+                   PreparedStatement pst = conn.prepareStatement("update meditbl set qty=? where mname=?");
+                   pst.setInt(1, qty);
+                   pst.setString(2, nm);
                    return pst.executeUpdate();
                } catch (Exception e) {
                    System.out.println(e);

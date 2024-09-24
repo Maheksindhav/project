@@ -12,10 +12,10 @@ public class tbldata {
             String batch,company_name;
              float amt;
          String category;
-           float gst;
-           float tot_amt;
+//           float gst;
+//           float tot_amt;
            
-    public tbldata(int mid, String mname, int qty, float rate, Date mfg_date, Date exp_date, String batch, String company_name,float amt, String category, float gst, float tot_amt) {
+    public tbldata(int mid, String mname, int qty, float rate, Date mfg_date, Date exp_date, String batch, String company_name,float amt, String category) {
         this.mid = mid;
         this.mname = mname;
         this.qty = qty;
@@ -26,8 +26,8 @@ public class tbldata {
         this.company_name=company_name;
         this.amt = amt;
         this.category = category;
-        this.gst = gst;
-        this.tot_amt = tot_amt;
+//        this.gst = gst;
+//        this.tot_amt = tot_amt;
     }
 
     public int getMid() {
@@ -74,13 +74,13 @@ public class tbldata {
         return category;
     }
 
-    public float getGst() {
-        return gst;
-    }
-
-    public float getTot_amt() {
-        return tot_amt;
-    }
+//    public float getGst() {
+//        return gst;
+//    }
+//
+//    public float getTot_amt() {
+//        return tot_amt;
+//    }
 
     public void setMid(int mid) {
         this.mid = mid;
@@ -118,12 +118,12 @@ public class tbldata {
         this.category = category;
     }
 
-    public void setGst(float gst) {
-        this.gst = gst;
-    }
-
-    public void setTot_amt(float tot_amt) {
-        this.tot_amt = tot_amt;
-    }
+//    public void setGst(float gst) {
+//        this.gst = gst;
+//    }
+//
+//    public void setTot_amt(float tot_amt) {
+//        this.tot_amt = tot_amt;
+//    }
 
 }

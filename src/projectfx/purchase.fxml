@@ -51,6 +51,6 @@
             <Image url="@icons8-patient-60%20(1).png" />
          </image>
       </ImageView>
-      <VBox fx:id="box" prefHeight="811.0" prefWidth="980.0" stylesheets="@purchasecss.css" />
+      <VBox fx:id="box" prefHeight="1150.0" prefWidth="980.0" stylesheets="@purchasecss.css" />
    </children>
 </AnchorPane>

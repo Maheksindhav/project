@@ -56,10 +56,7 @@ public class ViewReturnController implements Initializable {
     private TableColumn<tblreturn,Float> amt;
     @FXML
     private TableColumn<tblreturn,String> category;
-    @FXML
-    private TableColumn<tblreturn,Float> gst;
-    @FXML
-    private TableColumn<tblreturn,Float> tot_amt;
+
     @FXML
     private TableColumn<tblreorder,Timestamp> order_date;
     @FXML
@@ -124,8 +121,8 @@ public class ViewReturnController implements Initializable {
             com = comp.get(i).toString();
              a = Float.parseFloat(am.get(i).toString());
              cat = cate.get(i).toString();
-             g = Float.parseFloat(gs.get(i).toString());
-             t = Float.parseFloat(tam.get(i).toString());
+//             g = Float.parseFloat(gs.get(i).toString());
+//             t = Float.parseFloat(tam.get(i).toString());
              order = Timestamp.valueOf(or.get(i).toString());
              retun = Timestamp.valueOf(retu.get(i).toString());
      }
@@ -137,7 +134,7 @@ public class ViewReturnController implements Initializable {
               int n = name.size();
              for (int i = 0; i < n; i++) {
                 inform(i);
-                if (cr.CompnayReturnStock(nm, q, r, mfgd, expd, b, com, cat, a, g, t, order, retun)>0) {
+                if (cr.CompnayReturnStock(nm, q, r, mfgd, expd, b, com, cat, a, order, retun)>0) {
                   res++;
                   
               } 
@@ -184,8 +181,7 @@ public class ViewReturnController implements Initializable {
                         r.getInt("qty"), r.getFloat("rate"),
                         r.getDate("mfg_date"), r.getDate("exp_date"),
                         r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                        r.getString("category"), r.getFloat("gst"),
-                        r.getFloat("tot_amt"),r.getTimestamp("order_date"),r.getTimestamp("return_date")));
+                        r.getString("category"),r.getTimestamp("order_date"),r.getTimestamp("return_date")));
                 tbl.setItems(listM);
             }
         } catch (Exception e) {
@@ -205,8 +201,8 @@ public class ViewReturnController implements Initializable {
                 company_name.setCellValueFactory(new PropertyValueFactory<>("company_name"));
                 amt.setCellValueFactory(new PropertyValueFactory<>("amt"));
                 category.setCellValueFactory(new PropertyValueFactory<>("category"));
-                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
-                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
+//                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
+//                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
                 order_date.setCellValueFactory(new PropertyValueFactory<>("order_date"));
                 return_date.setCellValueFactory(new PropertyValueFactory<>("return_date"));
     }
@@ -237,10 +233,10 @@ public class ViewReturnController implements Initializable {
          comp.add(tbl.getSelectionModel().getSelectedItem().getCompany_name());
          cate.add(tbl.getSelectionModel().getSelectedItem().getCategory());
          qt.add(tbl.getSelectionModel().getSelectedItem().getQty());
-         gs.add(tbl.getSelectionModel().getSelectedItem().getGst());
+//         gs.add(tbl.getSelectionModel().getSelectedItem().getGst());
          rat.add(tbl.getSelectionModel().getSelectedItem().getRate());
          am.add(tbl.getSelectionModel().getSelectedItem().getAmt());
-         tam.add(tbl.getSelectionModel().getSelectedItem().getTot_amt());
+//         tam.add(tbl.getSelectionModel().getSelectedItem().getTot_amt());
          mfg.add(tbl.getSelectionModel().getSelectedItem().getMfg_date());
          exp.add(tbl.getSelectionModel().getSelectedItem().getExp_date());
          or.add(tbl.getSelectionModel().getSelectedItem().getOrder_date());

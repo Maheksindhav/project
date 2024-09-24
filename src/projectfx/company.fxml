@@ -88,6 +88,6 @@
             <DropShadow />
          </effect>
       </Button>
-      <VBox fx:id="vb" layoutY="-1.0" prefHeight="1030.0" prefWidth="959.0" />
+      <VBox fx:id="vb" layoutY="-1.0" prefHeight="1128.0" prefWidth="959.0" />
    </children>
 </AnchorPane>

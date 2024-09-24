@@ -61,10 +61,7 @@ public class StockController implements Initializable {
     private TableColumn<tbldata, Float> amt;
     @FXML
     private TableColumn<tbldata, String> category;
-    @FXML
-    private TableColumn<tbldata, Float> gst;
-    @FXML
-    private TableColumn<tbldata, Float> tot_amt;
+ 
    
     ObservableList<tbldata> listM = FXCollections.observableArrayList();
     @FXML
@@ -83,10 +80,7 @@ public class StockController implements Initializable {
     private TextField batc;
     @FXML
     private TextField amot;
-    @FXML
-    private TextField gs;
-    @FXML
-    private TextField tamot;
+
     @FXML
     private Label title;
     @FXML
@@ -156,8 +150,8 @@ public class StockController implements Initializable {
             comp=company.getText();
             amount = Float.parseFloat(amot.getText());
             cate = cat.getText();
-            gstt = Float.parseFloat(gs.getText());
-            totamt = Float.parseFloat(tamot.getText());
+//            gstt = Float.parseFloat(gs.getText());
+//            totamt = Float.parseFloat(tamot.getText());
     }
           
         String data,test;
@@ -191,9 +185,9 @@ public class StockController implements Initializable {
             batc.setText(null);
             company.setText(null);
             cat.setText(null);
-            gs.setText(null);
+//            gs.setText(null);
             amot.setText(null);
-            tamot.setText(null);
+//            tamot.setText(null);
     }
          
     @FXML
@@ -258,8 +252,7 @@ public class StockController implements Initializable {
                                 r.getInt("qty"), r.getFloat("rate"),
                                 r.getDate("mfg_date"), r.getDate("exp_date"),
                                 r.getString("batch"), r.getString("company_name"), r.getFloat("amt"),
-                                r.getString("category"), r.getFloat("gst"),
-                                r.getFloat("tot_amt")));
+                                r.getString("category")));
                         tbl.setItems(listM);
                     }
                     listview.getSelectionModel().clearSelection();
@@ -283,8 +276,8 @@ public class StockController implements Initializable {
                 company_name.setCellValueFactory(new PropertyValueFactory<>("company_name"));
                 amt.setCellValueFactory(new PropertyValueFactory<>("amt"));
                 category.setCellValueFactory(new PropertyValueFactory<>("category"));
-                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
-                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
+//                gst.setCellValueFactory(new PropertyValueFactory<>("gst"));
+//                tot_amt.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
                 
                 reorder.setCellFactory(col -> new TableCell<String,Button>(){
                       @Override
@@ -312,8 +305,8 @@ public class StockController implements Initializable {
                                  company.setText(company_name.getCellData(0));
                                  amot.setText(amt.getCellData(0).toString());
                                  cat.setText(category.getCellData(0));
-                                 gs.setText(gst.getCellData(0).toString());
-                                 tamot.setText(tot_amt.getCellData(0).toString());
+//                                 gs.setText(gst.getCellData(0).toString());
+//                                 tamot.setText(tot_amt.getCellData(0).toString());
                               });
                           }
                     }
@@ -328,10 +321,10 @@ public class StockController implements Initializable {
                 int a = Integer.parseInt(Qt.getText());
                 float b = Float.parseFloat(rat.getText());
                 amot.setText(String.valueOf(a * b));
-                float at = Float.parseFloat(amot.getText());
-                gs.setText(String.valueOf((at * 15) / 100));
-                float gss = Float.parseFloat(gs.getText());
-                tamot.setText(String.valueOf(at + gss));
+//                float at = Float.parseFloat(amot.getText());
+//                gs.setText(String.valueOf((at * 15) / 100));
+//                float gss = Float.parseFloat(gs.getText());
+//                tamot.setText(String.valueOf(at + gss));
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, ex);
@@ -346,7 +339,7 @@ public class StockController implements Initializable {
                   String imagepath = "C:\\Users\\poojajungi\\Downloads\\check.png";
                   ImageIcon  icon = new ImageIcon(imagepath);
                   inform();
-                if (cr.reOrderAdd( name, qtyy, rt, m, expiry, b, comp, cate, amount, gstt, totamt)>0) {
+                if (cr.reOrderAdd( name, qtyy, rt, m, expiry, b, comp, cate, amount)>0) {
                     if (cr.totalUpdateReOrder(name)>0) {
                         JOptionPane.showMessageDialog(null, "Reorder Successfully.", "Reorder ", JOptionPane.PLAIN_MESSAGE,icon);
                     }

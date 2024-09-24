@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -23,7 +25,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 
-public class ImageFormController extends Frame implements Initializable {
+public class ImageFormController  implements Initializable {
 
     @FXML
     private ImageView imgview;
@@ -76,13 +78,21 @@ public class ImageFormController extends Frame implements Initializable {
             Map<String,Object> m = new HashMap<>();
             m.put("imgExp", path);
              jp = JasperFillManager.fillReport(jr, m, conn);
+             SwingNode swingNode = new SwingNode();
              JRViewer jrv = new JRViewer(jp);
+             swingNode.setContent(jrv);
+             VBox vbox = new VBox();
+             vbox.getChildren().add(swingNode);
+             vbox.prefHeightProperty().bind(body.heightProperty());
+             vbox.prefWidthProperty().bind(body.widthProperty());
+             body.getChildren().clear();
+             body.getChildren().add(vbox);
              jrv.setOpaque(true);
              jrv.setVisible(true);
-             this.add(jrv);
-             body.getScene().getWindow().hide();
-             this.setSize(1200,700);
-             this.setVisible(true); 
+//             this.add(jrv);
+//             body.getScene().getWindow().hide();
+//             this.setSize(1200,700);
+//             this.setVisible(true); 
         }
         }catch (Exception e) {
             System.out.println(e);

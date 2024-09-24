@@ -14,7 +14,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="Viewbody" prefHeight="605.0" prefWidth="1688.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projectfx.VieworderController">
    <children>
-      <TableView fx:id="tbl" layoutX="11.0" layoutY="87.0" prefHeight="314.0" prefWidth="1576.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);">
+      <TableView fx:id="tbl" layoutX="11.0" layoutY="87.0" prefHeight="314.0" prefWidth="1401.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#BCECFF 0%,#FCF5EC 100%);">
          <columns>
             <TableColumn fx:id="mid" prefWidth="101.60000610351562" text="Medicine_id" />
             <TableColumn fx:id="mname" prefWidth="123.20001220703125" text="Medicine_Name" />
@@ -25,10 +25,8 @@
             <TableColumn fx:id="batch" prefWidth="119.20001220703125" text="Batch No." />
             <TableColumn fx:id="company_name" prefWidth="169.5999755859375" text="Company_Name" />
             <TableColumn fx:id="amt" minWidth="0.0" prefWidth="136.79998779296875" text="Amount" />
-            <TableColumn fx:id="category" prefWidth="111.20001220703125" text="Category" />
-            <TableColumn fx:id="gst" prefWidth="92.7999267578125" text="GST 15%" />
-            <TableColumn fx:id="tot_amt" prefWidth="108.0" text="Total Amount" />
-            <TableColumn fx:id="order_date" prefWidth="189.60009765625" text="Reorder Date &amp; Time" />
+            <TableColumn fx:id="category" prefWidth="141.0" text="Category" />
+            <TableColumn fx:id="order_date" prefWidth="187.0" text="Reorder Date &amp; Time" />
          </columns>
          <cursor>
             <Cursor fx:constant="DISAPPEAR" />
@@ -37,7 +35,7 @@
             <InnerShadow />
          </effect>
       </TableView>
-      <Button fx:id="btnsubmit" layoutX="1450.0" layoutY="439.0" mnemonicParsing="false" onAction="#btnReturn" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#79F1A4 0%,#0E5CAD 100%); -fx-border-color: white; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Return Stock" textFill="WHITE">
+      <Button fx:id="btnsubmit" layoutX="1317.0" layoutY="444.0" mnemonicParsing="false" onAction="#btnReturn" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: linear-gradient(from 0% 0% to 100% 0%,#79F1A4 0%,#0E5CAD 100%); -fx-border-color: white; -fx-border-radius: 10px; -fx-background-radius: 10px;" text="Return Stock" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

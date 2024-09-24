@@ -77,10 +77,10 @@ join meditbl m where m.mid = t.medicine_id;]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="6" splitType="Stretch"/>
+		<band height="5" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="43" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
 				<reportElement x="68" y="0" width="110" height="20" forecolor="#00CCCC" uuid="3aba101e-b558-409b-a3fe-576c3c767026"/>
 				<textElement>
@@ -89,28 +89,21 @@ join meditbl m where m.mid = t.medicine_id;]]>
 				<text><![CDATA[MedicineName]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="191" y="0" width="84" height="20" forecolor="#00CCCC" uuid="fba0c32c-a408-4a7e-a48f-f1266ac20152"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Total Stock]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="288" y="0" width="99" height="20" forecolor="#00CCCC" uuid="3c3b65fb-e84f-4dd6-95c1-cca94bd1dd68"/>
+				<reportElement x="224" y="0" width="99" height="20" forecolor="#00CCCC" uuid="3c3b65fb-e84f-4dd6-95c1-cca94bd1dd68"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Current Stock]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="397" y="0" width="64" height="20" forecolor="#00CCCC" uuid="331b23b8-ca1c-4a1f-a03c-b55f645be6b3"/>
+				<reportElement x="333" y="0" width="64" height="20" forecolor="#00CCCC" uuid="331b23b8-ca1c-4a1f-a03c-b55f645be6b3"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reorder]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="481" y="0" width="56" height="20" forecolor="#00CCCC" uuid="2e19f4a2-b215-41eb-b60d-bef9fa441d44"/>
+				<reportElement x="417" y="0" width="56" height="20" forecolor="#00CCCC" uuid="2e19f4a2-b215-41eb-b60d-bef9fa441d44"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -127,53 +120,44 @@ join meditbl m where m.mid = t.medicine_id;]]>
 	</columnHeader>
 	<detail>
 		<band splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="42" splitType="Stretch">
+		<band height="50">
 			<textField>
-				<reportElement x="81" y="11" width="110" height="20" uuid="88c92c9a-6190-4a14-ab4f-b5c64d4df417"/>
+				<reportElement x="37" y="10" width="41" height="20" uuid="214b18ba-0bf2-4a75-a0b7-95e21621a6f4"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{mname}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="191" y="11" width="84" height="20" uuid="ba95b72d-0fa5-4213-8c24-ac9613756637"/>
-				<textElement textAlignment="Center">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="288" y="11" width="99" height="20" uuid="45e60097-c872-4eda-bc56-4bfdcd6a7206"/>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{current_stock}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="397" y="11" width="64" height="20" uuid="34cb468f-ef85-4f39-88e0-21b4b03a9822"/>
-				<textElement textAlignment="Center">
-					<font size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{reorder}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="481" y="11" width="56" height="20" uuid="56afbf6d-e346-4c53-a4b7-37befc981032"/>
+				<reportElement x="427" y="10" width="56" height="20" uuid="56afbf6d-e346-4c53-a4b7-37befc981032"/>
 				<textElement textAlignment="Center">
 					<font size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{returnsto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="27" y="11" width="41" height="20" uuid="214b18ba-0bf2-4a75-a0b7-95e21621a6f4"/>
+				<reportElement x="343" y="10" width="64" height="20" uuid="34cb468f-ef85-4f39-88e0-21b4b03a9822"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reorder}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="10" width="99" height="20" uuid="45e60097-c872-4eda-bc56-4bfdcd6a7206"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{current_stock}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="10" width="110" height="20" uuid="88c92c9a-6190-4a14-ab4f-b5c64d4df417"/>
 				<textElement>
 					<font size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{mname}]]></textFieldExpression>
 			</textField>
 		</band>
-	</columnFooter>
+	</detail>
 	<pageFooter>
 		<band height="103">
 			<textField>
@@ -206,44 +190,34 @@ join meditbl m where m.mid = t.medicine_id;]]>
 				<text><![CDATA[Total :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="224" y="8" width="30" height="20" forecolor="#006666" uuid="e0a299f0-3048-42e7-82c0-8c906a2fa6fe"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement x="212" y="6" width="42" height="1" uuid="4a6980a6-f5e5-4247-aa82-37a7299a38db"/>
-			</line>
-			<textField>
-				<reportElement x="333" y="8" width="24" height="17" forecolor="#006666" uuid="4e807d2b-ba89-4fd7-b417-9854391cd4c0"/>
+				<reportElement x="273" y="7" width="24" height="17" forecolor="#006666" uuid="4e807d2b-ba89-4fd7-b417-9854391cd4c0"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{CS}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="425" y="8" width="30" height="20" forecolor="#006666" uuid="05877d1d-adb5-4805-9be5-78140540a43e"/>
+				<reportElement x="365" y="7" width="30" height="20" forecolor="#006666" uuid="05877d1d-adb5-4805-9be5-78140540a43e"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{reorder}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="509" y="9" width="42" height="19" forecolor="#006666" uuid="0ce894c9-a399-47d9-9d2b-a869e4278f06"/>
+				<reportElement x="449" y="8" width="42" height="19" forecolor="#006666" uuid="0ce894c9-a399-47d9-9d2b-a869e4278f06"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{return}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="315" y="6" width="42" height="1" uuid="ef4d306a-48f0-4df1-92a4-1cc7b1d5f8ec"/>
+				<reportElement x="255" y="5" width="42" height="1" uuid="ef4d306a-48f0-4df1-92a4-1cc7b1d5f8ec"/>
 			</line>
 			<line>
-				<reportElement x="413" y="6" width="42" height="1" uuid="821a99e7-6260-4c6f-8039-5e21c2f05b61"/>
+				<reportElement x="353" y="5" width="42" height="1" uuid="821a99e7-6260-4c6f-8039-5e21c2f05b61"/>
 			</line>
 			<line>
-				<reportElement x="495" y="6" width="42" height="1" uuid="9d4dd624-168d-4e07-bff6-0e153d2e423d"/>
+				<reportElement x="435" y="5" width="42" height="1" uuid="9d4dd624-168d-4e07-bff6-0e153d2e423d"/>
 			</line>
 		</band>
 	</summary>

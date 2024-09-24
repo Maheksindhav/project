@@ -51,14 +51,16 @@ import java.util.Random;
 import java.math.*;
 import java.time.Month;
 import java.util.Observable;
+import javafx.embed.swing.SwingNode;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
  *
  * @author mahek
  */
-public class InvoicefxController extends Frame implements Initializable {
+public class InvoicefxController  implements Initializable {
 
     @FXML
     private TextField txtinvoiceno;
@@ -283,10 +285,12 @@ public class InvoicefxController extends Frame implements Initializable {
             int current_qty=q_t-current_q;
 //            System.out.println(current_qty);
             iobj o=new iobj();
-           if( o.updatecurrnetstock(current_qty, co)>0)
-           
-               System.out.println("update successfully");
-           
+            crud cr = new crud();
+           if( o.updatecurrnetstock(current_qty, co)>0){
+                if (cr.UpdateStockMedicine(current_qty, co)>0) {
+                   System.out.println("update successfully");
+                }
+           }
             else
                 System.out.println("not update");
         } catch (Exception e) {
@@ -602,12 +606,20 @@ public class InvoicefxController extends Frame implements Initializable {
 
         jr = JasperCompileManager.compileReport("D:\\java\\.net\\projectfx\\src\\projectfx\\report1.jrxml");
         jp = JasperFillManager.fillReport(jr, m, c);
+        SwingNode swingNode = new SwingNode();
         JRViewer jrv = new JRViewer(jp);
+        swingNode.setContent(jrv);
+             VBox vbox = new VBox();
+             vbox.getChildren().add(swingNode);
+             vbox.prefHeightProperty().bind(invoice_anchorpane.heightProperty());
+             vbox.prefWidthProperty().bind(invoice_anchorpane.widthProperty());
+             invoice_anchorpane.getChildren().clear();
+             invoice_anchorpane.getChildren().add(vbox);
         jrv.setOpaque(true);
         jrv.setVisible(true);
-        this.add(jrv);
-        this.setSize(300, 300);
-        this.setVisible(true);
+//        this.add(jrv);
+//        this.setSize(300, 300);
+//        this.setVisible(true);
 
     }
 

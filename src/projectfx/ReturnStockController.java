@@ -50,10 +50,7 @@ public class ReturnStockController implements Initializable {
     private TableColumn<tblreorder, Float> amt1;
     @FXML
     private TableColumn<tblreorder, String> category1;
-    @FXML
-    private TableColumn<tblreorder, Float> gst1;
-    @FXML
-    private TableColumn<tblreorder, Float> tot_amt1;
+
     @FXML
     private TableColumn<tblreorder, Timestamp> order_date1;
     @FXML
@@ -91,8 +88,8 @@ public class ReturnStockController implements Initializable {
         company_name1.setCellValueFactory(new PropertyValueFactory<>("company_name"));
         amt1.setCellValueFactory(new PropertyValueFactory<>("amt"));
         category1.setCellValueFactory(new PropertyValueFactory<>("category"));
-        gst1.setCellValueFactory(new PropertyValueFactory<>("gst"));
-        tot_amt1.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
+//        gst1.setCellValueFactory(new PropertyValueFactory<>("gst"));
+//        tot_amt1.setCellValueFactory(new PropertyValueFactory<>("tot_amt"));
         order_date1.setCellValueFactory(new PropertyValueFactory<>("order_date"));
         total.setText(String.valueOf(newtbl.getItems().size()));
        }
@@ -116,13 +113,13 @@ public class ReturnStockController implements Initializable {
                 comp = newtbl.getItems().get(i).company_name;
                 amount = newtbl.getItems().get(i).amt;
                 cate = newtbl.getItems().get(i).category;
-                gstt = newtbl.getItems().get(i).gst;
-                totamt = newtbl.getItems().get(i).tot_amt;
+//                gstt = newtbl.getItems().get(i).gst;
+//                totamt = newtbl.getItems().get(i).tot_amt;
                 ord = newtbl.getItems().get(i).order_date;
                                 
              a = String.valueOf(newid) ;
           //   cr.returnAdd(name, qtyy, rt, m, expiry, b, comp, cate, amount, gstt, totamt, ord);
-              if (cr.returnAdd(name, qtyy, rt, m, expiry, b, comp, cate, amount, gstt, totamt, ord)>0) {
+              if (cr.returnAdd(name, qtyy, rt, m, expiry, b, comp, cate, amount, ord)>0) {
                   if (cr.totalUpdateReturn(name)>0) {
                       res++;
                   }
@@ -138,7 +135,7 @@ public class ReturnStockController implements Initializable {
             }    
             if(res>0)
             {
-                         JOptionPane.showMessageDialog(null, "Stock Return Successfully.","ReturnStock Message",JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(null, "Stock Return Successfully.","ReturnStock Message",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e,"ReturnStock Message",JOptionPane.ERROR_MESSAGE);
